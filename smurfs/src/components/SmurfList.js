@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { getSmurfs } from '../actions/index'
+import { Link } from 'react-router-dom'
+
 
 class SmurfList extends React.Component {
     componentDidMount() {
@@ -27,6 +29,7 @@ class SmurfList extends React.Component {
                 {smurfs.map((smurf) => {
                     return <div className="smurf" key={smurf.id}>Name: {smurf.name}<br />Age: {smurf.age}<br />Height: {smurf.height}</div>
                 })}
+                    <Link to='/add'><div className="smurf"><br />Add a Smurf<br /><br /></div></Link>
             </section>
         );
     }
