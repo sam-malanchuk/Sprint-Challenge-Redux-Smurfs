@@ -9,6 +9,10 @@ export const GET_SMURFS_START = 'GET_SMURFS_START'
 export const GET_SMURFS_SUCCESS = 'GET_SMURFS_SUCCESS'
 export const GET_SMURFS_FAILED = 'GET_SMURFS_FAILED'
 
+export const ADD_SMURF_START = 'ADD_SMURF_START'
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS'
+export const ADD_SMURF_FAILED = 'ADD_SMURF_FAILED'
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -30,6 +34,22 @@ export function getSmurfs() {
         })
         .catch((err) => {
           dispatch({ type: GET_SMURFS_FAILED, payload: err.response.data })
+        })
+  }
+}
+
+export function addSmurf(name, age, height) {
+  return (dispatch) => {
+    dispatch({ type: ADD_SMURF_START })
+
+    const payload = { name, age, height}
+
+    axios.post('http://localhost:3333/smurfs', payload)
+        .then((res) => {
+          dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data })
+        })
+        .catch((err) => {
+          dispatch({ type: ADD_SMURF_FAILED, payload: err.response.data })
         })
   }
 }

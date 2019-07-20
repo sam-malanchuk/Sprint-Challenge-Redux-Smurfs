@@ -5,6 +5,9 @@ import {
   GET_SMURFS_START,
   GET_SMURFS_SUCCESS,
   GET_SMURFS_FAILED,
+  ADD_SMURF_START,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILED,
 } from '../actions/index'
 
 
@@ -13,8 +16,6 @@ const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
    addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
    error: null,
  }
 
@@ -48,6 +49,28 @@ export default function(state = initialState, action) {
         return {
           ...state,
           fetchingSmurfs: false,
+          error: action.payload.message,
+        }
+      }
+      case ADD_SMURF_START: {
+        return {
+          ...state,
+          addingSmurfs: true,
+        }
+      }
+      case ADD_SMURF_SUCCESS: {
+        const myData = action.payload
+        return {
+          ...state,
+          addingSmurfs: false,
+          error: null,
+          smurfs: myData,
+        }
+      }
+      case ADD_SMURF_FAILED: {
+        return {
+          ...state,
+          addingSmurfs: false,
           error: action.payload.message,
         }
       }

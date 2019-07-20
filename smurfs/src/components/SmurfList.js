@@ -26,8 +26,8 @@ class SmurfList extends React.Component {
                 <h2>My Smurf Village</h2>
                 {error && <p>{error}</p>}
 
-                {smurfs.map((smurf) => {
-                    return <div className="smurf" key={smurf.id}>Name: {smurf.name}<br />Age: {smurf.age}<br />Height: {smurf.height}</div>
+                {smurfs.map((smurf, index) => {
+                    return <div className="smurf" key={index}>Name: {smurf.name}<br />Age: {smurf.age}<br />Height: {smurf.height}</div>
                 })}
                     <Link to='/add'><div className="smurf"><br />Add a Smurf<br /><br /></div></Link>
             </section>
