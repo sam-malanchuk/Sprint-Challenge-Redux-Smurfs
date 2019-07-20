@@ -36,10 +36,12 @@ export default function(state = initialState, action) {
         }
       }
       case GET_SMURFS_SUCCESS: {
+        const myData = action.payload
         return {
           ...state,
           fetchingSmurfs: false,
           error: null,
+          smurfs: myData,
         }
       }
       case GET_SMURFS_FAILED: {
